@@ -1,0 +1,7 @@
+@NorthwindAPI_HostAddress = https://localhost:7020
+
+POST {{NorthwindAPI_HostAddress}}/auth/login
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+username=falbers&password=freddipass

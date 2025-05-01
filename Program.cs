@@ -13,6 +13,19 @@ builder.Services.AddSwaggerGen();
 string connString = builder.Configuration.GetConnectionString("Northwind");
 builder.Services.AddDbContext<NorthwindDbContext>(options => options.UseSqlServer(connString));
 
+var allowedOrigins = "allowOriginsPolicy";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowedOrigins,
+        policy =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,7 +38,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseCors(allowedOrigins);
 app.MapControllers();
 
 app.Run();

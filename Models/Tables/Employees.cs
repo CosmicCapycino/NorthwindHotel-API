@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace NorthwindAPI.Models.Tables;
 
-public class Employees
+[Table("Employees")]
+public class Employee
 {
     [Key] public int Id { get; set; }
     public string Forename { get; set; }
@@ -11,5 +13,5 @@ public class Employees
     public string Email { get; set; }
     public string Phone { get; set; }
     public int DepartmentId { get; set; }
-    [JsonIgnore] public Departments Department { get; set; } = null;
+    [JsonIgnore] public Department Department { get; set; } = null;
 }

@@ -14,7 +14,7 @@ public class EmployeesController(NorthwindDbContext context) : ControllerBase
     [HttpGet("fetch/{department}")]
     public async Task<IActionResult> FetchByDepartment(string department)
     {
-        List<Employees> allRooms = await _dbContext.Employees.Where(x => x.Department.Name == department).ToListAsync();
+        List<Employee> allRooms = await _dbContext.Employees.Where(x => x.Department.Name == department).ToListAsync();
         return Ok(allRooms);
     }
 }
