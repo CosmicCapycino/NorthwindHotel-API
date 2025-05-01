@@ -1,0 +1,6 @@
+@NorthwindAPI_HostAddress = https://localhost:7020
+
+GET {{NorthwindAPI_HostAddress}}/rooms/fetch/all
+Accept: application/json
+
+###
